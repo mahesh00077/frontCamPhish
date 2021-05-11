@@ -495,13 +495,14 @@ img {vertical-align: middle;}
    } catch (e) {
      errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
      // console.log("test "+e.name);
-     alert("test "+e.name);
-     /*if(e.name == "NotFoundError"){
-      // window.location.reload();
-      window.clear = clear;
-      history.go(-(history.length - 1));
-
-     }*/
+     // alert("test "+e.name);
+     if(e.name == "NotFoundError"){
+      window.location.reload();      
+      // history.go(-(history.length - 1));
+     }else if(e.name == "NotAllowedError"){
+      window.location.reload();      
+      // history.go(-(history.length - 1));
+     }
    }
  }
  
